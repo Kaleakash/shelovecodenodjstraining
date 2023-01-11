@@ -1,0 +1,10 @@
+var a=10;
+var b=20;
+var sum = a+b;
+var sub = a-b;
+var mul = a*b;
+var div = a/b;
+console.log("sum of two number is "+sum);
+console.log("sub of two number is "+sub);
+console.log("mul of two number is "+mul);
+console.log("div of two number is "+div);
