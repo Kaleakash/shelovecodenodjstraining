@@ -1,7 +1,15 @@
 let fs = require("fs");  // load fs module. 
-var data = "Welcome Node JS Program";
+var data1 = "Welcome to javaScript";
 
-fs.writeFile("demo.txt",data,(err)=>{
+// override the old data 
+// fs.writeFile("demo.txt",data,(err)=>{
+//     if(!err){
+//         console.log("Data stored in file")
+//     }
+// })
+
+// append the data a: append 
+fs.writeFile("demo.txt",data1,{"flag":"a+"},(err)=>{
     if(!err){
         console.log("Data stored in file")
     }
