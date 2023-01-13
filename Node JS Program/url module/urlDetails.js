@@ -1,5 +1,5 @@
 let url = require("url");
-    let urlDetails ="http://www.google.com:80/home?name=Raj&age=21";
+    let urlDetails ="http://www.google.com:80/about?name=Raj&age=21";
 let urlref = url.parse(urlDetails,true);
     console.log(urlDetails)
 //console.log(urlref)
