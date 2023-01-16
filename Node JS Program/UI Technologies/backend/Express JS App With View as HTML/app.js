@@ -36,11 +36,12 @@ app.get("/signIn",(request,response)=> {
     //     response.send("Failure try once again");
     // }
     let data = fs.readFileSync(__dirname+"\\logins.json");   // read data from file data in the buffer 
-    let login = JSON.parse(data.toString());    // convert that data into string and that string convert into json 
-    if(login.email==email && login.password==password){
-        response.send("successfully login");
+    let logins = JSON.parse(data.toString());    // convert that data into string and that string convert into json 
+    let result = logins.find(l=>l.email==email && l.password==password);
+    if(result==undefined){
+        response.send("failure try once again")
     }else {
-        response.send("failure try once again");
+        response.send("successfully login")
     }
 
     // response.send("done!")
@@ -50,8 +51,20 @@ app.get("/accountCreate",(request,response)=> {
     let passwordValue = request.query.password;         // recevie password field from form 
     let login = {email:emailValue,password:passwordValue}; // literal style object
     console.log(login);
-    fs.writeFileSync("logins.json",JSON.stringify(login));
-    response.send("Account Created...");
+    //fs.writeFileSync("logins.json",JSON.stringify(login));  // override the data 
+    //fs.writeFileSync("logins.json",JSON.stringify(login),{flag:"a+"});
+    let data = fs.readFileSync(__dirname+"\\logins.json");
+    let logins = JSON.parse(data.toString());       // array of login object. 
+    let result = logins.find(l=>l.email==emailValue);
+    if(result==undefined){
+        logins.push(login);                     // add in array 
+        fs.writeFileSync("logins.json",JSON.stringify(logins));
+        response.send("Account created");
+    }else {
+        response.send("EmailId must be unique")
+    }
+
+ 
 })
 
 app.get("/signUp",(request,response)=> {
