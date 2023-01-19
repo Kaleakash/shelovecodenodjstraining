@@ -1,5 +1,10 @@
 let express = require("express");
 let app = express();
+let bodyParser = require("body-parser");
+
+
+// middleware added 
+app.use(bodyParser.json());     // this code enable json body part from request. 
 
 let cust1 = {cid:100,cname:"Ravi",age:21}
 let cust2 = {cid:101,cname:"Ramesh",age:20}
@@ -22,7 +27,7 @@ app.get("/getCustomer",(request,response)=> {
     response.json(cust1);
 })
 
-// http://localhost:3000/getCustomer 
+// http://localhost:3000/getCustomers 
 
 app.get("/getCustomers",(request,response)=> {
     response.json(customers);
@@ -52,5 +57,23 @@ app.get("/searchCustomerByPathParam/:cid",(request,response)=> {
       response.json({"msg":"Record not present"})
       }
   })
+
+  // create or store customer details in array 
+// http://localhost:3000/storeCustomer 
+
+  app.post("/storeCustomer",(request,response)=> {
+        let customer = request.body;
+        //console.log(customer);
+        let result = customers.find(c=>c.cid==customer.cid);
+        //console.log(result)
+        if(result == undefined){
+                customers.push(customer);       // added in array 
+                response.send("Customer details stored successfully");
+        }else {
+            response.send("Record didn't store, Customer id must be unique")
+        }
+  })
+
+
 
 app.listen(3000,()=>console.log("Server running on port number 30000"))
