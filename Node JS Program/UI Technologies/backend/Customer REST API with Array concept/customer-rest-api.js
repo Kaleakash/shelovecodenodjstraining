@@ -3,6 +3,7 @@ let app = express();
 let bodyParser = require("body-parser");
 
 
+
 // middleware added 
 app.use(bodyParser.json());     // this code enable json body part from request. 
 
@@ -73,6 +74,58 @@ app.get("/searchCustomerByPathParam/:cid",(request,response)=> {
             response.send("Record didn't store, Customer id must be unique")
         }
   })
+
+// update age 
+
+app.patch("/updateCustomerAge",(request,response)=> {
+    let customer = request.body;
+    let index = customers.findIndex(c=>c.cid==customer.cid);
+    if(index<0){
+            response.send("No customer present with id as "+customer.cid);
+    }else {
+            customers[index].age=customer.age;
+            response.send(" Age updated ");
+    }
+});
+
+// update name 
+
+app.patch("/updateCustomerName",(request,response)=> {
+    let customer = request.body;
+    let index = customers.findIndex(c=>c.cid==customer.cid);
+    if(index<0){
+            response.send("No customer present with id as "+customer.cid);
+    }else {
+            customers[index].cname=customer.cname;
+            response.send(" Name updated ");
+    }
+});
+
+// update age and name 
+
+app.put("/updateCustomer",(request,response)=> {
+    let customer = request.body;
+    let index = customers.findIndex(c=>c.cid==customer.cid);
+    if(index<0){
+            response.send("No customer present with id as "+customer.cid);
+    }else {
+            customers[index].cname=customer.cname;
+            customers[index].age=customer.age;
+            response.send(" customer details updated successfully");
+    }
+});
+
+app.delete("/deleteCustomer/:cid",(request,response)=> {
+    let cid = request.params.cid;
+    let index = customers.findIndex(c=>c.cid==cid);
+    if(index<0){
+            response.send("No customer present with id as "+cid);
+    }else {
+            customers.splice(index,1);
+            response.send(" customer details deleted successfully");
+    }
+});
+
 
 
 
