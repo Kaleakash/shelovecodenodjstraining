@@ -23,8 +23,8 @@ mongoClient.connect(url,(err,client)=> {
         // })
 
         // insert Many 
-        let emp1 = {_id:6,name:"Leeta",age:28,salary:28000};
-        let emp2 = {_id:7,name:"Veeta",age:26,salary:22000}
+        let emp1 = {_id:10,name:"Leeta",age:28,salary:28000};
+        let emp2 = {_id:11,name:"Veeta",age:26,salary:22000}
         db.collection("Employees").insertMany([emp1,emp2],(err1,result)=> {
             if(!err1){
                     console.log(result)
