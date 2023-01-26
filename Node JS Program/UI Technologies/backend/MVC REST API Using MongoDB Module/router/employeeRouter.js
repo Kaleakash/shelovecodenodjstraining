@@ -6,4 +6,9 @@ let employeeController = require("../controller/employeeController")
 
 router.get("/getEmployee",employeeController.getAllEmployees);
 
+// http://localhost:3000/api/employees/findEmployeeById/1
+// http://localhost:3000/api/employees/findEmployeeById/7
+
+router.get("/findEmployeeById/:_id",employeeController.findEmployeeById);
+
 module.exports=router;

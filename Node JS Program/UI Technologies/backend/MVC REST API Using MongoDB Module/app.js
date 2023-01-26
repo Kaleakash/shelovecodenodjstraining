@@ -6,6 +6,8 @@ let app = express();
 dbInfo.dbConnect();
 
 
+app.use(express.json());    // extract json data from request body;
+
 
 // app.get("/",(request,response)=>{
 //     response.send("Test")
