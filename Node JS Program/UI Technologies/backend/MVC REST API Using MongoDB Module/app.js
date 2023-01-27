@@ -5,7 +5,7 @@ let app = express();
 
 dbInfo.dbConnect();
 
-
+//middleware 
 app.use(express.json());    // extract json data from request body;
 
 

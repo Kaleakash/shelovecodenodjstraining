@@ -11,5 +11,5 @@ exports.dbConnect = ()=> {
 }
 
 exports.getCollection = ()=> {
-    return dbClient.db("mydb").collection("Employees");
+    return dbClient.db("mydb").collection("Emp");
 }

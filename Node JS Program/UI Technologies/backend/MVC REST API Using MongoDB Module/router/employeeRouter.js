@@ -11,4 +11,15 @@ router.get("/getEmployee",employeeController.getAllEmployees);
 
 router.get("/findEmployeeById/:_id",employeeController.findEmployeeById);
 
+// http://localhost:3000/api/employees/storeEmployee 
+router.post("/storeEmployee",employeeController.storeEmployee);
+
+
+// http://localhost:3000/api/employees/deleteEmployeeById/1 
+router.delete("/deleteEmployeeById/:_id",employeeController.deleteEmployee);
+
+
+// http://localhost:3000/api/employees/updateEmployeeSalary
+router.patch("/updateEmployeeSalary",employeeController.updateEmployee);
+
 module.exports=router;
