@@ -7,7 +7,10 @@ let storeStudentInfo = async (request,response)=> {
     //response.send("done");
     try{
     let result  = await studentModel.insertMany(student);
-    response.send(result);
+    if(result!=null){
+        response.send("Record stored successfully");
+    }
+    //response.send(result);
     }catch(ex){
         response.send(ex);
     }

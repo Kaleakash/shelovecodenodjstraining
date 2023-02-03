@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="studentInfo.js"></script>
+</head>
+<body>
+    <h2>Add Student Details</h2>
+    <form>
+        <label>SId</label>
+        <input type="number" id="_id"/><br/>
+        <label>FName</label>
+        <input type="text" id="first_name"/><br/>
+        <label>LName</label>
+        <input type="text" id="last_name"/><br/>
+        <label>Age</label>
+        <input type="number" id="age"/><br/>
+        <label>class</label>
+        <input type="text" id="class"/><br/>
+        <label>grade</label>
+        <input type="text" id="grade"/><br/>
+        <label>address</label>
+        <input type="text" id="address"/><br/>
+        <input type="button" value="Store Student Info" onclick="storeStudentInfo()"/>
+        <input type="reset" value="reset"/>
+    </form>
+    
+    <span id="msg" style="color:red"> </span>
+</body>
+</html>

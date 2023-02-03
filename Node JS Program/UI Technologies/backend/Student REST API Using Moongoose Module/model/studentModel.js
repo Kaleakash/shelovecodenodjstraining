@@ -5,7 +5,8 @@ let studentSchema = mongoose.Schema({
 
     first_name:{
         type:String,
-        required:[true,"first name required"]},
+        required:[true,"first name required"],
+        unique:true},
 
     last_name:{
         type:String,
