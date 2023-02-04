@@ -8,7 +8,7 @@
     <script src="login.js"></script>
 </head>
 <body>
-    <h2>Login Page</h2>
+    <h2>Account Create</h2>
     <form>
         <label>Emailid</label>
         <input type="email" id="emailid"/><br/>
@@ -16,12 +16,11 @@
         <input type="password" id="password"/><br/>
         <label>TypeOfUser</label>
         <input type="radio" name="typeofuser" value="admin"/>Admin
-        <input type="radio" name="typeofuser" value="student"/>student
-        <br/>
-        <input type="button" value="SignIn" onclick="signIn()"/>
+        <input type="radio" name="typeofuser" value="student"/>Student<br/>
+        <input type="button" value="SignUp" onclick="signUp()"/>
         <input type="reset" value="reset"/>
     </form>
-    <a href="signUp.html">SignUp</a>
+    <a href="index.html">Login</a>
     <span id="msg" style="color:red"></span>
 </body>
 </html>

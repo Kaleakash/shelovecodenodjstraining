@@ -3,6 +3,7 @@ let cors = require("cors");
 let app  = express();
 let dbConfig = require("./config/dbConfig");
 let studentRouter = require("./router/studentRouter");
+let loginRouter = require("./router/loginRouter");
 
 dbConfig.dbConnection;  // calling this variable to get the connection 
 
@@ -12,7 +13,7 @@ app.use(cors());            // disable cors policy
 
 
 app.use("/api/students",studentRouter);
-
+app.use("/api/login",loginRouter);
 
 
 
