@@ -35,6 +35,16 @@ let findStudentById = async (reqeust,response)=> {
     }
 }
 
+let findStudentByName= async (reqeust,response)=> {
+    try {
+        let fname = reqeust.params.fname;
+        let result = await studentModel.find({first_name:fname});
+        response.json(result);
+    } catch (error) {
+        response.json(error);
+    }
+}
+
 let updateStudentGrade = async (reqeust,response)=> {
     let student = reqeust.body;
     try{
@@ -67,6 +77,6 @@ let deleteStudentById = async (reqeust,response)=> {
     }
 }
 
-module.exports = {storeStudentInfo,findAllStudents,findStudentById,updateStudentGrade,deleteStudentById};
+module.exports = {storeStudentInfo,findAllStudents,findStudentById,updateStudentGrade,deleteStudentById,findStudentByName}
 
 

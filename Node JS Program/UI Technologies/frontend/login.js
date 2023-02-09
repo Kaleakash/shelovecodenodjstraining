@@ -63,3 +63,47 @@ function reset() {
     document.getElementById("emailid").value="";
     document.getElementById("password").value="";
 }
+
+
+function logout() {
+    window.location.href="http://127.0.0.1:5500/index.html"   
+}
+
+
+async function loadStudentData(){
+     let result = document.getElementById("result");
+     let respnose = await fetch("http://localhost:3000/api/students/findAllStudents");
+     let data = await respnose.json();
+     console.log(data);
+     //result.innerHTML = data.map(obj=>"StdId "+obj._id+"Student Name "+obj.first_name).join("<br/>");
+     result.innerHTML = data.map(obj=>"<li>StdId "+obj._id+"Student Name "+obj.first_name+"</li>").join("<br/>");
+     //console.log(data);   
+}
+
+
+async function searchStudent(){
+    let fname = document.getElementById("fname").value;
+    let result = document.getElementById("result");
+    let respnose = await fetch("http://localhost:3000/api/students/findStudentByName/"+fname);
+    let data = await respnose.json();
+    if(data.length==0){
+        result.innerHTML="No Student present "
+    }else {
+        result.innerHTML = data.map(obj=>"StdId "+obj._id+"Student Name "+obj.first_name).join("<br/>");  
+    }
+
+    //console.log(data);
+    //result.innerHTML = data.map(obj=>"StdId "+obj._id+"Student Name "+obj.first_name).join("<br/>");
+    //result.innerHTML = data.map(obj=>"<li>StdId "+obj._id+"Student Name "+obj.first_name+"</li>").join("<br/>");
+}
+
+
+
+
+
+
+
+
+
+
+
