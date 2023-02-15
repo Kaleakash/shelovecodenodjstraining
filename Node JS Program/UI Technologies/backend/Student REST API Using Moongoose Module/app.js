@@ -6,7 +6,7 @@ let studentRouter = require("./router/studentRouter");
 let loginRouter = require("./router/loginRouter");
 
 dbConfig.dbConnection;  // calling this variable to get the connection 
-    dbConfig.adminAccount();
+dbConfig.adminAccount();
 app.use(express.json());
 app.use(cors());            // disable cors policy 
 
