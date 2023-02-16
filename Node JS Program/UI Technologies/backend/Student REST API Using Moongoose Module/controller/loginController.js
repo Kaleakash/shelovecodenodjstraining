@@ -52,7 +52,7 @@ let signIn = async (request,response)=> {
         if(result){
                 console.log(findUser);
                 // we will write the code 
-                let payload ={"emailid":findUser.emailid};
+            let payload ={"emailid":findUser.emailid,"typeofuser":findUser.typeofuser};
                 let tokenValue = jwt.sign(payload,"secretKey");
                 if(findUser.typeofuser=="admin" && login.typeofuser=="admin"){
                         response.json({

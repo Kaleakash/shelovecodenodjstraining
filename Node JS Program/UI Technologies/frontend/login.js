@@ -20,9 +20,12 @@ function signIn() {
         }
     }).then(res=>res.json()).then(result=>{
                 //console.log(result);
-        if(result.msg=="Admin login successfully"){
+        //console.log(result.token);
+        //sessionStorage.setItem("token",result.token);
+        sessionStorage.setItem("token",result.token);
+        if(result.msg=="Admin done login successfully"){
             window.location.href="http://127.0.0.1:5500/adminHome.html"
-        }else if(result.msg=="Student login successfully"){
+        }else if(result.msg=="Student done login successfully"){
             window.location.href="http://127.0.0.1:5500/studentHome.html" 
         } else {
             document.getElementById("msg").innerHTML=result.msg;
@@ -66,18 +69,31 @@ function reset() {
 
 
 function logout() {
+    sessionStorage.removeItem("token");
     window.location.href="http://127.0.0.1:5500/index.html"   
 }
 
 
 async function loadStudentData(){
-     let result = document.getElementById("result");
-     let respnose = await fetch("http://localhost:3000/api/students/findAllStudents");
-     let data = await respnose.json();
+    try{ 
+    let result = document.getElementById("result");
+    let response = await fetch("http://localhost:3000/api/students/findAllStudents",{
+        method:"get",
+        headers:{
+            "Content-type":"application/json",
+            "authorization":sessionStorage.getItem("token")
+        }
+    });
+
+     //let respnose = await fetch("http://localhost:3000/api/students/findAllStudents");
+     let data = await response.json();
      console.log(data);
      //result.innerHTML = data.map(obj=>"StdId "+obj._id+"Student Name "+obj.first_name).join("<br/>");
      result.innerHTML = data.map(obj=>"<li>StdId "+obj._id+"Student Name "+obj.first_name+"</li>").join("<br/>");
-     //console.log(data);   
+     //console.log(data);  
+}catch(ex){
+    alert(ex);
+} 
 }
 
 

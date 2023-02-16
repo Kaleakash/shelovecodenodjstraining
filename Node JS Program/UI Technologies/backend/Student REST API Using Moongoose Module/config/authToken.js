@@ -1,6 +1,5 @@
 let jwt = require("jsonwebtoken");
 
-
 exports.verifyUserToken = (request,response,next)=> {
     try{
     let token = request.headers.authorization;
@@ -10,8 +9,9 @@ exports.verifyUserToken = (request,response,next)=> {
         })
     }else {
         let verifyToken = jwt.verify(token,"secretKey");
-        //console.log(verifyToken);
-        next();
+        //console.log(verifyToken.typeofuser);
+        request.typeofuser= verifyToken.typeofuser;     // set the type of user in request object.
+        next();         // pass to next filter 
     }
 }catch(ex){
     response.json({
@@ -19,4 +19,26 @@ exports.verifyUserToken = (request,response,next)=> {
     })
 }
     
+}
+
+exports.isStudentOrAdmin = (request,response,next)=> {
+    try{
+         console.log(request.typeofuser+" "+request.path);
+         if(request.typeofuser=="admin" && (request.path=="/findAllStudents" ||  request.path=="/storeStudent") ){
+            console.log("admin condition")
+            next();
+         }else if(request.typeofuser=="student" && request.path=="/findAllStudents"){
+            console.log("student condition")
+            next();
+         }else {
+            response.json({
+                "msg":"You are unauthorized person or don't have role to access that resource"
+            })
+         }
+            
+    }catch(ex){
+        response.json({
+            "msg":"wrong user"+ex
+        })
+    }
 }
