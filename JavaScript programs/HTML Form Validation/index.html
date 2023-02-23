@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Form Validation Using HTML5</h2>
+    <form action="welcome.html">
+        <label>UserName</label>
+        <input type="text" name="uname" required minlength="4" maxlength="6"/><br/>
+        <label>Password</label>
+        <input type="text" name="pname" required pattern="\D{3}\d{2}"/><br/>
+        <label>EmaillId</label>
+        <input type="text" name="ename" required pattern="[a-z,A-Z,0-9]*[@][a-z,A-Z,0-9]*[.]com"/><br/>
+        <input type="email" name="email1" required/><br/>
+        <label>DOB</label>
+        <input type="datetime-local" name="dd"/><br/>
+        <input type="submit" value="submit"/>
+        <input type="reset" value="reset"/>
+    </form>
+</body>
+</html>
