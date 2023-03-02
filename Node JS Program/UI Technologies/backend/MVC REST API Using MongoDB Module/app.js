@@ -2,12 +2,13 @@ let express = require("express");
 let dbInfo = require("./config/dbConfig");
 let employeeRouter = require("./router/employeeRouter");
 let app = express();
+let cors = require("cors");
 
 dbInfo.dbConnect();
 
 //middleware 
 app.use(express.json());    // extract json data from request body;
-
+app.use(cors());
 
 // app.get("/",(request,response)=>{
 //     response.send("Test")
