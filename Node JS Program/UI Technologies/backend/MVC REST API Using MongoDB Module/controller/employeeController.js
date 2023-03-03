@@ -28,9 +28,13 @@ exports.storeEmployee= async (request,response)=> {
     //console.log(emp);
     try{
     var result = await empCollection.getCollection().insertOne(emp);
-    response.send(result);
+    //response.send(result);
+    if(result){
+        response.json({"msg":"record stored successsfully"})
+    }
     }catch(ex){
-        response.send(ex);
+        //response.send(ex);
+        response.json({"msg":"record didn't store","error":ex})
     }
 }
 
