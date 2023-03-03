@@ -16,7 +16,7 @@ exports.findEmployeeById = async (request,response)=> {
         if(result==null){
             response.json({"msg":"Record not present with id as "+empId})
         }else {
-            response.json(result);
+            response.json({"msg":"Record present","employee":result});
         }
         }catch(ex){
             response.json({"msg":"Error generated "+ex});
