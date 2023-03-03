@@ -33,7 +33,7 @@ async function storeEmployeeInfo(event) {
             <label>Id</label>
             <input type="number" name="_id" onChange={(event)=>{
                 setEmployee(prevalue=> {
-                    return {...prevalue,"_id":event.target.value}
+                    return {...prevalue,"_id":eval(event.target.value)}
                 })
             }}/>
             <br/>
@@ -47,14 +47,14 @@ async function storeEmployeeInfo(event) {
             <label>Age</label>
             <input type="number" name="age" onChange={(event)=>{
                 setEmployee(prevalue=> {
-                    return {...prevalue,"age":event.target.value}
+                    return {...prevalue,"age":eval(event.target.value)}
                 })
             }}/>
             <br/>
             <label>Salary</label>
             <input type="number" name="salary" onChange={(event)=>{
                 setEmployee(prevalue=> {
-                    return {...prevalue,"salary":event.target.value}
+                    return {...prevalue,"salary":eval(event.target.value)}
                 })
             }}/>
             <br/>
@@ -68,7 +68,7 @@ async function storeEmployeeInfo(event) {
             <label>DeptId</label>
             <input type="number" name="deptId" onChange={(event)=>{
                 setEmployee(prevalue=> {
-                    return {...prevalue,"deptId":event.target.value}
+                    return {...prevalue,"deptId":eval(event.target.value)}
                 })
             }}/>
             <br/>

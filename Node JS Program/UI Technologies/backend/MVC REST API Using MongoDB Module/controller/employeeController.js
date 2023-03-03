@@ -40,16 +40,17 @@ exports.storeEmployee= async (request,response)=> {
 
 exports.deleteEmployee = async (request,response)=> {
     let empId = eval(request.params._id);
+    console.log(empId)
     try{
     let result  = await empCollection.getCollection().deleteOne({_id:empId});
     //response.send(result);
     if(result.deletedCount>0){
-        response.send("Record deleted successfully")
+        response.json({"msg":"Record deleted successfully"})
     }else{
-        response.send("Record not present with id as "+empId);
+        response.json({"msg":"Record not present with id as "+empId})
     }
     }catch(ex){
-        response.send(ex);
+        response.json({"msg":"Error generated"+ex})
     }
 }
 

@@ -11,6 +11,8 @@ async function searchEmployee() {
     if(result.data.msg=="Record present"){
                 setResult(true);
             setEmployee(result.data.employee)
+    }else {
+        setResult(false);
     }
     setMsgInfo(result.data.msg);
 }
