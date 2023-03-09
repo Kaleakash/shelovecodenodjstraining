@@ -12,7 +12,7 @@ import ViewStudent from './ViewStudent';
 function App() {
   return (
     <div className="App">
-    <h2>React Routing Example</h2> 
+    <h2 className='myClass'>React Routing Example</h2> 
     <Link to="/aboutus">About Us</Link> |
     <Link to="/contactus">Contact Us</Link> |
     <Link to="/feedback">Feedback</Link> |

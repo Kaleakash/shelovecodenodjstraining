@@ -46,7 +46,7 @@ async function checkUserFromDb(event) {
                 <label>TypeOfUser</label>
                 <input type="radio" name="typeofuser" value="student" onClick={(e)=>setTypeOfUser(e.target.value)}/>Student
                 <input type="radio" name="typeofuser" value="admin" onClick={(e)=>setTypeOfUser(e.target.value)}/>Admin <br/>
-                <input type="submit" value="submit"/>
+                <input type="submit" value="submit" className="btn btn-success"/>
                 <input type="reset" value="reset"/> 
             </form>
         </div>
