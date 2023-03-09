@@ -21,13 +21,15 @@ async function checkUserFromDb(event) {
     let login = {emailid:emailid,password:pass,typeofuser:typeofuser};      // json data using useState hook
 
     let result =await axios.post("http://localhost:3000/api/login/signIn",login); 
-   
+    console.log(result.data.token);
     if(result.data.msg=="Admin done login successfully"){
         alert(result.data.msg)
         navigate("/adminhome");
+        sessionStorage.setItem("token",result.data.token);
     }else if(result.data.msg=="Student done login successfully") {
         alert(result.data.msg);
         navigate("/studenthome");
+        sessionStorage.setItem("token",result.data.token);
     }else {
         alert("Failure try once agian")
     }
