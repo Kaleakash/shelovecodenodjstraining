@@ -4,10 +4,15 @@ let initialState = {
 
 function reducer(currentState=initialState,action){
 
-    // base upon action we can do the changes on state variable. 
-    // which is consider as global state
+    switch(action.type){
+        case "INCREMENT": 
+                return {...currentState,counter:currentState.counter+1}
+        case "DECREMENT": 
+                return {...currentState,counter:currentState.counter-1}
+        default: 
+            return currentState;
+    }
 
-    return currentState;
 }
 
 export default reducer;
