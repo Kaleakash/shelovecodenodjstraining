@@ -8,7 +8,7 @@ import reducer from './reducer';
 import { Provider } from 'react-redux';
 
 const store = createStore(reducer);   // we are creating store and assign reducer with state variable 
-                                      // no state variable consider as global variable. 
+                                      // now state variable consider as global variable. 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
